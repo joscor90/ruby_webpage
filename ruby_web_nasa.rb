@@ -19,8 +19,16 @@ def request(url, api_key)
     data = JSON.parse(data)
 
     #Output generation
-
-    
+    output_hash = {}
+    data["photos"].each do |ele|
+        i = data["photos"].index(ele)
+        ele.each do |k, v|
+            if k == "img_src"
+                output_hash[i] = v
+            end
+        end
+    end
+    return output_hash 
 end
 
 info = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=10","p4qrdNNDbxlw2IKbyoVbO41EFviwWAAApE6Bk9E7") 
