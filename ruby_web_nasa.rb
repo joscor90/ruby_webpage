@@ -31,6 +31,23 @@ def request(url, api_key)
     return output_hash 
 end
 
+#build_web_page method
+def build_web_page(output_hash)
+    head = "!DOCTYPE html\n<html>\n\t<head>\n\t</head>\n\t<body>\n"
+    count = output_hash.length
+    body = "\t\t<ul>"
+    footer = "\t\t</ul>\n\t</body>\n</html>"
+    output_hash.each do |k, v|
+        body += "\n\t\t\t<li><img src=\"#{v}\">...</img>\n"
+    end
+    return head+body+footer
+end
+
+
 info = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=10","p4qrdNNDbxlw2IKbyoVbO41EFviwWAAApE6Bk9E7") 
 
-print "#{info}"
+# print "#{info}"
+
+test = build_web_page(info)
+
+print "#{test}"
