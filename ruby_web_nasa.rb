@@ -34,7 +34,6 @@ end
 #build_web_page method
 def build_web_page(output_hash)
     head = "<html>\n\t<head>\n\t</head>\n\t<body>\n"
-    count = output_hash.length
     body = "\t\t<ul>"
     footer = "\t\t</ul>\n\t</body>\n</html>"
     output_hash.each do |k, v|
