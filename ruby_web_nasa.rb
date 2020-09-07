@@ -7,7 +7,7 @@ require "json"
 #request method
 def request(url, api_key)
 
-    #request to NASA API
+    #Request to NASA API
     url = URI("#{url}&api_key=#{api_key}")
     https = Net::HTTP.new(url.host, url.port);
     https.use_ssl = true
@@ -17,8 +17,6 @@ def request(url, api_key)
 
     #Parsing data 
     data = JSON.parse(data)
-
-    print data
 
     #Output generation
     output_hash = {}
