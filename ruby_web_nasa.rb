@@ -18,6 +18,8 @@ def request(url, api_key)
     #Parsing data 
     data = JSON.parse(data)
 
+    print data
+
     #Output generation
     output_hash = {}
     data["photos"].each do |ele|
@@ -33,7 +35,7 @@ end
 
 #build_web_page method
 def build_web_page(output_hash)
-    head = "<html>\n\t<head>\n\t</head>\n\t<body>\n"
+    head = "<html>\n\t<head>\n\t\t\t<title>NASA PHOTOS</title>\n\t</head>\n\t<body>\n"
     body = "\t\t<ul>"
     footer = "\t\t</ul>\n\t</body>\n</html>"
     output_hash.each do |k, v|
