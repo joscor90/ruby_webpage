@@ -3,8 +3,6 @@ require "net/http"
 require "openssl"
 require "json"
 
-
-#request method
 def request(url, api_key)
 
     #Request to NASA API
@@ -18,7 +16,8 @@ def request(url, api_key)
     #Parsing data 
     data = JSON.parse(data)
 
-    #Output generation
+    
+    #Output hash
     output_hash = {MAST: [], FHAZ: [], RHAZ: [], CHEMCAM: [], NAVCAM: [], MAHLI: [], MARDI: [], PAMCAM: [], MINITES: []}
     data["photos"].each do |ele|
         ele.each do |k, v|
@@ -64,14 +63,9 @@ end
 
 
 
-#Calling request method
+
 info = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000","p4qrdNNDbxlw2IKbyoVbO41EFviwWAAApE6Bk9E7")
 
-print info
 
-#Calling build_web_page method
 test = build_web_page(info)
-
-
-#Writing a new file with final output
 File.write("index.html", test)
