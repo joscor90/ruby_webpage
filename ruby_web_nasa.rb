@@ -76,11 +76,11 @@ end
 info = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000","p4qrdNNDbxlw2IKbyoVbO41EFviwWAAApE6Bk9E7")
 
 #Calling build_web_page method
-test = build_web_page(info)
+webpage = build_web_page(info)
 
 #Calling photo_count method
 photos = photos_count(info)
 print photos
 
 #Writing a new file with final output
-File.write("index.html", test)
+File.write("index.html", webpage)
