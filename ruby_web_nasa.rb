@@ -56,22 +56,31 @@ def build_web_page(output_hash)
     footer = "\t\t</ul>\n\t</body>\n</html>"
     output_hash.each do |k, v|
         v.each do |i|
-            body += "\n\t\t\t<li><img src=\"#{i}\">...</img>\n"
+            body += "\n\t\t\t<li><img src=\"#{i}\">...</img></li>\n"
         end
     end
     return head+body+footer
 end
 
+#photos_count method
+def photos_count(output_hash)
+    photo_hash = {}
+    output_hash.each do |k, v|
+        photo_hash[k] = v.length
+    end
+    return photo_hash
+end
 
 
 #Calling request method
 info = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000","p4qrdNNDbxlw2IKbyoVbO41EFviwWAAApE6Bk9E7")
 
-print info
-
 #Calling build_web_page method
 test = build_web_page(info)
 
+#Calling photo_count method
+photos = photos_count(info)
+print photos
 
 #Writing a new file with final output
 File.write("index.html", test)
