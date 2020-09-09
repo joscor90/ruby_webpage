@@ -43,7 +43,7 @@ def build_web_page(output_hash)
 end
 
 #Calling request method
-info = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=10","p4qrdNNDbxlw2IKbyoVbO41EFviwWAAApE6Bk9E7") 
+info = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000","p4qrdNNDbxlw2IKbyoVbO41EFviwWAAApE6Bk9E7") 
 
 #Calling build_web_page method
 test = build_web_page(info)
